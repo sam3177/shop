@@ -1,4 +1,5 @@
 const fs = require('fs');
+const {v4 : uuidv4} = require('uuid')
 
 class UsersRepo {
 	constructor (filename) {
@@ -24,13 +25,13 @@ class UsersRepo {
 	async addUser (attrs) {
 		const records = await this.getAll();
 		// console.log(users);
-		records.push(attrs);
-		this.writeAll(records);
+		records.push({...attrs, id: uuidv4()});
+		await this.writeAll(records);
 	}
 	async writeAll (records) {
 		fs.promises.writeFile(
 			this.filename,
-			JSON.stringify(records)
+			JSON.stringify(records, null, 3)
 		);
 	}
 }

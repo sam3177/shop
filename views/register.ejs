@@ -1,0 +1,32 @@
+<%- include('partials/header') %>
+	<div class="container-fluid justify-content-center row">
+		<div class="col-4 p-5">
+			<h1>Signup</h1>
+			<form class="" action="/register" method="POST">
+				<div class="mb-3">
+					<label class="form-label">
+						Username
+						<input type="text" name="user[name]" class="form-control" aria-describedby="userName">
+					</label>
+				</div>
+				<div class="mb-3">
+					<label class="form-label">
+						Password
+						<input type="password" name="user[password]" class="form-control" aria-describedby="password">
+					</label>
+				</div>
+				<div class="mb-3">
+					<label class="form-label">
+						Confirm Password
+						<input type="password" name="user[passwordConfirm]" class="form-control"
+							aria-describedby="passwordConfirm">
+					</label>
+				</div>
+				<button type="submit" class="btn btn-primary">Register</button>
+			</form>
+		</div>
+	</div>
+
+
+
+	<%- include('partials/footer') %>

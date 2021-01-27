@@ -1,0 +1,25 @@
+<%- include('partials/header') %>
+<div class="ui main text container segment">
+	<div class="ui huge header">Blogs</div>
+</div>
+
+<% blogs.forEach((blog) => { %>
+<div class="ui main text container segment">
+	<div class="ui huge header"><%= blog.title %></div>
+	<div class="ui top attached">
+		<div class="item">
+			<img class="ui image centered rounded" src="<%= blog.image %>" alt="">
+			<div class="description">
+				<p><%= blog.body.substring(0, 100) %>...<p>
+				<a class="ui green basic button" href="/blogs/<%= blog._id %>">Read More</a>
+				<a class="ui violet basic button" href="/blogs/<%- blog._id %>/edit">Edit</a>
+				<form class="delete" action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
+					<button class="ui red inverted button">DELETE</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<% }) %>
+
+<%- include('partials/footer') %>

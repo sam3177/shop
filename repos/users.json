@@ -1,22 +1,20 @@
 [
    {
-      "username": "sam",
-      "password": "prahh"
+      "name": "samAdmin",
+      "password": "5",
+      "id": "b6c19aa1-18c9-46f3-9f47-da280944640e"
    },
    {
-      "username": "sam",
-      "password": "prahh"
+      "username": "ddddddd",
+      "password": "prsssssssssssssssss",
+      "id": "c3c9dbb3-9e25-4fb6-b76e-029b023021dd",
+      "avatar": "http",
+      "avatdddar": "http"
    },
    {
-      "username": "sam",
-      "password": "prahh"
-   },
-   {
-      "username": "samuel",
-      "password": "prahssssssh"
-   },
-   {
-      "username": "samuel",
-      "password": "prsssssssssssssssss"
+      "password": "prsssssssssssssssss",
+      "id": "c3c9dbb3-9e25-4fb6-b76e-029b023021dd",
+      "avatar": "http",
+      "avatdddar": "http"
    }
 ]

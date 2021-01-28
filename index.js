@@ -1,8 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const UsersRepo = require('./repos/users');
+const usersRepo = require('./repos/users');
 const app = express();
-const allUsers = new UsersRepo('users.json');
+
 //app config
 app.set('view engine', 'ejs');
 app.use(
@@ -20,18 +20,32 @@ app.get('/register', (req, res) => {
 	res.render('register');
 });
 
-app.post('/register', (req, res) => {
+app.post('/register', async (req, res) => {
 	const {
-		name,
+		username,
 		password,
 		passwordConfirm
-	} = req.body.user;
-	if (password === passwordConfirm) {
-		allUsers.addUser({ name, password });
+	} = req.body;
+	const existing = await usersRepo.getOneBy({
+		username
+	});
+	if (existing) {
+		res.render('register');
+		throw new Error(
+			'this username is already in use!'
+		);
+	}
+	if (
+		password !== '' &&
+		password === passwordConfirm
+	) {
+		usersRepo.addUser({ username, password });
+		console.log('user added');
 		res.render('home');
 	}
-	else { 
+	else {
 		res.render('register');
+		throw new Error('password typo');
 	}
 });
 

@@ -1,0 +1,44 @@
+<%- include('../../partials/header') %>
+	<div class="container-fluid justify-content-center row">
+		<div class="col-4 p-5 ms-5">
+			<h1>Signup</h1>
+			<form class="" action="/register" method="POST">
+				<div class="m-0">
+					<label class="m-auto form-label">
+						Username
+						<input type="text" name="username" class="form-control" aria-describedby="userName">
+						<p class="error-msg">
+							<%= errors.username %>
+						</p>
+
+					</label>
+				</div>
+				<div class="m-0">
+					<label class="m-auto form-label">
+						Password
+						<input type="password" name="password" class="form-control" aria-describedby="password">
+						<p class="error-msg">
+							<%= errors.password %>
+						</p>
+
+					</label>
+				</div>
+				<div class="m-0">
+					<label class="m-auto form-label">
+						Confirm Password
+						<input type="password" name="passwordConfirm" class="form-control" aria-describedby="passwordConfirm">
+						<p class="error-msg">
+							<%= errors.passwordConfirm %>
+						</p>
+
+					</label>
+				</div>
+				<button type="submit" class="btn btn-primary">Register</button>
+				<p>Have already an account? <a href="/login" class="redirect-form">Login</a></p>
+			</form>
+		</div>
+	</div>
+
+
+
+	<%- include('../../partials/footer') %>

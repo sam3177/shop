@@ -1,52 +1,37 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const usersRepo = require('./repos/users');
+// const usersRepo = require('./repos/users');
+const cookieSession = require('cookie-session');
 const app = express();
 
+const authRoutes = require('./routes/admin/auth');
+const adminRoutes = require('./routes/admin/products');
 //app config
 app.set('view engine', 'ejs');
+app.use(express.static('public'));
 app.use(
 	bodyParser.urlencoded({ extended: true })
 );
+app.use((req, res, next) => {
+	res.locals.user = req.session;
+	console
+	res.locals.errors = {
+		username: undefined,
+		password: undefined,
+		passwordConfirm: undefined
+	}
+	console.log(req.session)
+	next();
+});
+app.use(cookieSession({ keys: [ 'qwerty' ] }));
+app.use(authRoutes);
+app.use(adminRoutes);
 
 //RESTful ROUTES
-//home
+//home get
 app.get('/', (req, res) => {
 	console.log();
-	res.render('home', { user: '' });
-});
-//index GET
-app.get('/register', (req, res) => {
-	res.render('register');
-});
-
-app.post('/register', async (req, res) => {
-	const {
-		username,
-		password,
-		passwordConfirm
-	} = req.body;
-	const existing = await usersRepo.getOneBy({
-		username
-	});
-	if (existing) {
-		res.render('register');
-		throw new Error(
-			'this username is already in use!'
-		);
-	}
-	if (
-		password !== '' &&
-		password === passwordConfirm
-	) {
-		usersRepo.addUser({ username, password });
-		console.log('user added');
-		res.render('home');
-	}
-	else {
-		res.render('register');
-		throw new Error('password typo');
-	}
+	res.render('home');
 });
 
 app.listen(3000, () =>

@@ -1,0 +1,35 @@
+<%- include('../../partials/header') %>
+   <div class="container-fluid justify-content-center row">
+      <div class="col-4 p-5">
+         <h1>Login</h1>
+         <form class="" action="/login" method="POST">
+            <div class="mb-3">
+               <label class="form-label">
+                  Username
+                  <input type="text" name="username" class="form-control" aria-describedby="userName">
+                  <p class="error-msg">
+                     <%= errors.username %>
+                  </p>
+               </label>
+            </div>
+            <div class="mb-3">
+               <label class="form-label">
+                  Password
+                  <input type="password" name="password" class="form-control" aria-describedby="password">
+                  <p class="error-msg">
+                     <%= errors.password %>
+                  </p>
+
+               </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">LOGIN</button>
+            <p>Need an account? <a href="/register" class="redirect-form">Register</a></p>
+
+         </form>
+      </div>
+   </div>
+
+
+
+   <%- include('../../partials/footer') %>

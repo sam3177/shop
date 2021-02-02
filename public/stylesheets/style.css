@@ -1,0 +1,31 @@
+
+@media (min-width: 768px){
+   .nav-content{
+      display: flex;
+      width: 100%;
+      justify-content:space-between;
+   }
+   .user{
+      display: flex;
+      flex-direction:row;
+   }
+   .user a{
+      box-shadow: 5px 4px 5px rgba(0,0,0,0.5);   
+      border-radius: 20%;
+      margin: 0 5px;
+   }
+}
+.error-msg{
+   color: red;
+   font-size: 10px;
+}
+label{
+   width: 100%;
+}
+.redirect-form{
+   text-decoration: none;
+}
+textarea{
+   width: 100%;
+}
+

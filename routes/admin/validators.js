@@ -71,9 +71,10 @@ module.exports = {
 		.custom(async (product) => {
 			const existing = await productsRepo.getOneBy(
 				{
-					product
+					name : product
 				}
 			);
+			console.log('&*&*&**', existing);
 			if (existing) {
 				throw new Error(
 					`"${product}" already exists!`
@@ -85,7 +86,8 @@ module.exports = {
 	).trim(),
 	priceValidator           : check('price')
 		.trim()
-		.isNumeric(),
+		.toFloat()
+		.isFloat({ min: 1 }),
 	descriptionValidator     : check(
 		'description'
 	).trim()

@@ -12,18 +12,21 @@ app.use(express.static('public'));
 app.use(
 	bodyParser.urlencoded({ extended: true })
 );
+app.use(cookieSession({ keys: [ 'qwerty' ] }));
 app.use((req, res, next) => {
-	res.locals.user = req.session;
-	console
+	try{
+		res.locals.user =req.session? req.session.userId : false
+	} catch(e){
+		res.locals.user =false
+		
+	}
 	res.locals.errors = {
 		username: undefined,
 		password: undefined,
 		passwordConfirm: undefined
 	}
-	console.log(req.session)
 	next();
 });
-app.use(cookieSession({ keys: [ 'qwerty' ] }));
 app.use(authRoutes);
 app.use(adminRoutes);
 

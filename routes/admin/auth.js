@@ -1,10 +1,8 @@
 const express = require('express');
 const usersRepo = require('../../repos/users');
 const router = express.Router();
-const makeErr = require('./errHelper');
-const {
-	validationResult
-} = require('express-validator');
+const {errMiddleware} = require('./middlewares');
+
 const {
 	usernameValidator,
 	passwordValidator,
@@ -24,14 +22,10 @@ router.post(
 		passwordValidator,
 		passwordConfirmValidator
 	],
+	errMiddleware('register'),
+
 	async (req, res) => {
 		const { username, password } = req.body;
-		const errorsArr = validationResult(req);
-		console.log(errorsArr);
-		if (!errorsArr.isEmpty()) {
-			const errors = makeErr(errorsArr);
-			return res.render('./admin/auth/register', { errors });
-		}
 
 		const user = await usersRepo.addUser({
 			username,
@@ -41,9 +35,8 @@ router.post(
 		req.session.userId = user.id;
 
 		console.log('user added');
-		res.render('home', {
-			id : req.session.userId
-		});
+		res.redirect('/admin/products');
+		
 	}
 );
 // login GET
@@ -57,15 +50,10 @@ router.post(
 		usernameLoginValidator,
 		passwordLoginValidator
 	],
+	errMiddleware('login'),
 	async (req, res) => {
 		const { username, password } = req.body;
-		const errorsArr = validationResult(req);
 
-		if (!errorsArr.isEmpty()) {
-         console.log(errorsArr)
-			const errors = makeErr(errorsArr);
-			return res.render('./admin/authlogin', {errors});
-		}
 		const existing = await usersRepo.getOneBy({
 			username
 		});

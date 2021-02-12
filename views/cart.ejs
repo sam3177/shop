@@ -1,34 +1,45 @@
-<%- include('../../partials/header') %>
+<%- include('./partials/header') %>
 
    <div class="container">
       <header class="jumbotron">
          <div class="container">
-            <h1>Products list</h1>
-            <p> <a class="btn btn-primary btn-lg" href="/admin/products/new">Add product</a></p>
+            <h1>Cart</h1>
          </div>
       </header>
       <div class="row ">
          <div class="mb-3 col-10 border-bottom">
             <div class="row d-flex justify-content-center">
-               <div class="col-md-6">
+               <div class="col-md-5">
                   <div class="card-body pb-0">
                      <h5 class="card-title">
-                       Name
+                        Name
                      </h5>
+                  </div>
+               </div>
+               <div class="col-3">
+                  <div class="card-body pb-0">
+
+                  <h5 class="card-title">
+                     Price/Unit ($)
+                  </h5>
                   </div>
                </div>
                <div class="col-2">
                   <div class="card-body pb-0">
 
                   <h5 class="card-title">
-                     Price ($)
+                     Units
                   </h5>
                   </div>
                </div>
-               <div class="col-md-3 d-flex justify-content-around card-body pb-0">
-                  <h5>Edit</h5>
-                  <h5>Delete</h5>
 
+               <div class="col-md-2 ">
+                  <div class="card-body pb-0">
+
+                     <h5 class="card-title">
+                        Total
+                     </h5>
+                     </div>
                </div>
             </div>
          </div>
@@ -62,4 +73,4 @@
             <% }); %>
       </div>
    </div>
-   <%- include('../../partials/footer') %>
+   <%- include('./partials/footer') %>

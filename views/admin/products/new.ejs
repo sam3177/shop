@@ -6,18 +6,15 @@
             <div style="width: 40%; margin: 20px auto;">
                 <form enctype="multipart/form-data" method="POST">
                     <div class="form-group">
-                        <input class="form-control" type="text" name="name" placeholder="Name">
+                        <input class="form-control" value="<%= product.name %>" type="text" name="name"
+                            placeholder="Name">
                         <p class="error-msg">
                             <%= errors.name %>
                         </p>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="text" name="imageUrl" placeholder="Image URL">
-                        <p class="error-msg">
-                            <%= errors.image %>
-                        </p>
-                        <p class="text-start m-0">or choose from your computer</p>
-                        <input class="form-control" type="file" name="image" placeholder="Image URL">
+                        <input class="form-control" value="<%= product.image %>" type="file" name="image"
+                            placeholder="Image URL">
 
                         <p class="error-msg">
                             <%= errors.image %>
@@ -25,13 +22,16 @@
                     </div>
 
                     <div class="form-group">
-                        <input class="form-control" type="text" name="price" placeholder="price">
+                        <input class="form-control" value="<%= product.price %>" type="text" name="price"
+                            placeholder="price">
                         <p class="error-msg">
                             <%= errors.price %>
                         </p>
                     </div>
                     <div class="form-group">
-                        <textarea name="description" id="" placeholder="description" rows="5"></textarea>
+                        <textarea name="description" id="" placeholder="description" rows="5">
+                            <%= product.description %>
+                        </textarea>
                         <p class="error-msg">
                             <%= errors.description %>
                         </p>

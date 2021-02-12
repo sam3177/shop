@@ -6,6 +6,8 @@ const app = express();
 
 const authRoutes = require('./routes/admin/auth');
 const adminRoutes = require('./routes/admin/products');
+const productsRoutes = require('./routes/products');
+const cartRoutes = require('./routes/cart');
 //app config
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -29,13 +31,11 @@ app.use((req, res, next) => {
 });
 app.use(authRoutes);
 app.use(adminRoutes);
+app.use(productsRoutes);
+app.use(cartRoutes);
 
 //RESTful ROUTES
-//home get
-app.get('/', (req, res) => {
-	console.log();
-	res.render('home');
-});
+
 
 app.listen(3000, () =>
 	console.log('server Started')

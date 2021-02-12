@@ -68,14 +68,15 @@ module.exports = {
 		}),
 	nameValidator            : check('name')
 		.trim()
-		.custom(async (product) => {
+		.custom(async (product, { req }) => {
 			const existing = await productsRepo.getOneBy(
 				{
 					name : product
 				}
 			);
+			
 			console.log('&*&*&**', existing);
-			if (existing) {
+			if (existing && existing.id !== req.params.id) {
 				throw new Error(
 					`"${product}" already exists!`
 				);

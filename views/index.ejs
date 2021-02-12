@@ -1,25 +1,31 @@
-<%- include('partials/header') %>
-<div class="ui main text container segment">
-	<div class="ui huge header">Blogs</div>
-</div>
+<%- include('./partials/header') %>
 
-<% blogs.forEach((blog) => { %>
-<div class="ui main text container segment">
-	<div class="ui huge header"><%= blog.title %></div>
-	<div class="ui top attached">
-		<div class="item">
-			<img class="ui image centered rounded" src="<%= blog.image %>" alt="">
-			<div class="description">
-				<p><%= blog.body.substring(0, 100) %>...<p>
-				<a class="ui green basic button" href="/blogs/<%= blog._id %>">Read More</a>
-				<a class="ui violet basic button" href="/blogs/<%- blog._id %>/edit">Edit</a>
-				<form class="delete" action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
-					<button class="ui red inverted button">DELETE</button>
-				</form>
+	<div class="container">
+		<header class="jumbotron">
+			<div class="container">
+				<h1>Products list</h1>
 			</div>
+		</header>
+		<div class="row ">
+			<% products.forEach(product=>{ %>
+					<div class="card col-sm-6 col-md-4 col-lg-3">
+						<img class="img-thumbnail border-0" src="data:image/png;base64, <%= product.image %>" class="card-img-top" alt="<%= product.title %>">
+						<div class="card-body d-flex flex-column justify-content-end text-center">
+							<h5 class="card-title">
+								<%= product.title %>
+							</h5>
+							<h5 class="card-title">$<%= product.price %>
+							</h5>
+							<form action="/cart/products/<%= product.id %>" method="POST">
+								<button class="btn btn-primary">Add to Cart</button>
+							</form>
+						</div>
+					</div>
+
+
+
+				<% }) %>
 		</div>
 	</div>
-</div>
-<% }) %>
 
-<%- include('partials/footer') %>
+	<%- include('./partials/footer') %>

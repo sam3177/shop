@@ -1,0 +1,27 @@
+[
+   {
+      "id": "a758948c-62fd-4be9-825f-e9317b0eb01b",
+      "products": [
+         {
+            "id": "62b582ba",
+            "count": 5
+         },
+         {
+            "id": "ac3d7258",
+            "count": 2
+         },
+         {
+            "id": "e7fccbd5",
+            "count": 3
+         },
+         {
+            "id": "9317ff17",
+            "count": 6
+         },
+         {
+            "id": "ed1a0390",
+            "count": 1
+         }
+      ]
+   }
+]

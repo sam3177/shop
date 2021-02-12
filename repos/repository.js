@@ -25,8 +25,8 @@ class Repository {
 	async add (attrs) {
 		const records = await this.getAll();
 		const newElement = {
-			...attrs,
-			id : uuidv4()
+			id : uuidv4(),
+			...attrs
 		};
 		records.push(newElement);
 		await this.writeAll(records);

@@ -2,9 +2,11 @@ const {
 	validationResult
 } = require('express-validator');
 
+const productsRepo = require('../../repos/products');
+
 module.exports = {
 	errMiddleware      : (destination) => {
-		return (req, res, next) => {
+		return async (req, res, next) => {
 			const errorsArr = validationResult(req);
 			if (!errorsArr.isEmpty()) {
 				const errorsObj = errorsArr.mapped();
@@ -29,6 +31,21 @@ module.exports = {
 						return res.render(
 							'./admin/products/new',
 							{
+								errors,
+								product : {
+									...req.body,
+									image : req.file
+								}
+							}
+						);
+					case 'editProduct':
+						const product = await productsRepo.getOne(
+							req.params.id
+						);
+						return res.render(
+							'./admin/products/edit',
+							{
+								product,
 								errors
 							}
 						);

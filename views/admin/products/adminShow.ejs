@@ -1,65 +1,91 @@
-<%- include('../../partials/header') %>
+<%- include('../../partials/adminHeader') %>
 
-   <div class="container">
-      <header class="jumbotron">
-         <div class="container">
-            <h1>Products list</h1>
-            <p> <a class="btn btn-primary btn-lg" href="/admin/products/new">Add product</a></p>
-         </div>
-      </header>
-      <div class="row ">
-         <div class="mb-3 col-10 border-bottom">
-            <div class="row d-flex justify-content-center">
-               <div class="col-md-6">
-                  <div class="card-body pb-0">
-                     <h5 class="card-title">
-                       Name
-                     </h5>
-                  </div>
-               </div>
-               <div class="col-2">
-                  <div class="card-body pb-0">
-
-                  <h5 class="card-title">
-                     Price ($)
-                  </h5>
-                  </div>
-               </div>
-               <div class="col-md-3 d-flex justify-content-around card-body pb-0">
-                  <h5>Edit</h5>
-                  <h5>Delete</h5>
-
-               </div>
+   <div class="row d-flex justify-content-center list-content">
+      <div class="col-10 border">
+         <div class="row mt-3 d-flex justify-content-center">
+            <div class="mb-3 col-11 d-flex justify-content-between">
+               <h1>Products list</h1>
+               <p> <a class="btn btn-outline-primary btn-lg" href="/admin/products/new">Add product</a></p>
             </div>
-         </div>
-         <% products.forEach(product=>{ %>
-            <div class="card mb-3 col-10">
+            <div class="mb-3 d-none d-lg-block col-11 border-bottom">
                <div class="row d-flex justify-content-center">
-                  <div class="col-md-6">
-                     <div class="card-body">
+                  <div class="col-md-5">
+                     <div class="card-body pb-0">
                         <h5 class="card-title">
-                           <%= product.title %>
+                           Name
                         </h5>
                      </div>
                   </div>
-                  <div class="col-2">
-                     <div class="card-body">
+                  <div class="col-3">
+                     <div class="card-body pb-0">
 
-                     <h5 class="card-title">
-                        <%= product.price %>
-                     </h5>
+                        <h5 class="card-title text-center">
+                           Price ($)
+                        </h5>
                      </div>
                   </div>
-                  <div class="col-md-3 d-flex justify-content-around card-body">
-                     <a class="btn btn-primary btn-sm" href="/admin/products/<%= product.id %>/edit">Edit</a>
-                     <form action="/admin/products/<%= product.id %>/delete" method="POST">
-                        <button class="btn btn-danger btn-sm">Delete</button>
-                     </form>
+                  <div class="col-md-3 d-flex justify-content-around card-body pb-0">
+                     <h5>Edit</h5>
+                     <h5>Delete</h5>
 
                   </div>
                </div>
             </div>
-            <% }); %>
+            <% products.forEach(product=>{ %>
+               <div class="card d-none d-lg-block mb-3 col-11">
+                  <div class="row d-flex justify-content-center">
+                     <div class="col-5">
+                        <div class="card-body">
+                           <h5 class="card-title">
+                              <%= product.name %>
+                           </h5>
+                        </div>
+                     </div>
+                     <div class="col-3">
+                        <div class="card-body">
+                           <h5 class="card-title text-center">
+                              <%= product.price %>
+                           </h5>
+                        </div>
+                     </div>
+                     <div class="col-3 d-flex justify-content-around card-body">
+                        <form action="">
+                           <a class="btn btn-outline-primary btn-sm" href="/admin/products/<%= product.id %>/edit">Edit</a>
+                        </form>
+                        <form action="/admin/products/<%= product.id %>/delete" method="POST">
+                           <button class="btn btn-outline-danger btn-sm">Delete</button>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="card d-lg-none mb-3 col-11">
+                  <div class="row d-flex justify-content-center">
+                     <div class="col-7">
+                        <div class="card-body">
+                           <h5 class="card-title">
+                              <%= product.name %>
+                           </h5>
+                        </div>
+                     </div>
+                     <div class="col-5">
+                        <div class="card-body">
+                           <h5 class="card-title">
+                              $<%= product.price %>
+                           </h5>
+                        </div>
+                     </div>
+                     <div class="col-10 d-flex justify-content-around card-body">
+                        <form action="">
+                           <a class="btn btn-outline-primary btn-sm" href="/admin/products/<%= product.id %>/edit">Edit</a>
+                        </form>
+                        <form action="/admin/products/<%= product.id %>/delete" method="POST">
+                           <button class="btn btn-outline-danger btn-sm">Delete</button>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+               <% }); %>
+         </div>
       </div>
-   </div>
-   <%- include('../../partials/footer') %>
+      <%- include('../../partials/footer') %>

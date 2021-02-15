@@ -75,7 +75,6 @@ module.exports = {
 				}
 			);
 			
-			console.log('&*&*&**', existing);
 			if (existing && existing.id !== req.params.id) {
 				throw new Error(
 					`"${product}" already exists!`

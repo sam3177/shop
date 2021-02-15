@@ -1,14 +1,14 @@
-
-
-   .nav-content{
-      display: flex;
-      width: 100%;
-      justify-content:space-between;
-   }
-   .user{
-      display: flex;
-      flex-direction:row;
-   }
+.nav-content{
+   display: flex;
+   width: 100%;
+   justify-content:space-between;
+}
+.user{
+   display: flex;
+   flex-direction:row;
+   align-items:center;
+   justify-content: space-between;
+}
 .error-msg{
    color: red;
    font-size: 10px;
@@ -33,8 +33,31 @@ label{
 }
 .product-img{
    object-fit: contain;
+   transition: transform .4s ease-in-out;
+}
+.card.h-100{
+   overflow: hidden;
+}
+.product-img:hover{
+   transform: scale(1.3);
+   object-fit: cover;
+
 }
 .list-content{
    margin: 10vh auto;
 }
+.admin-login{
+   position: fixed;
+   right: 10px;
+   bottom: 0;
+   text-decoration: none;
+   font-size: 12px;
+}
+#under-construction{
+   width: 100vw;
+}
+#under-construction>img{
+   object-fit: cover;
+   width: 100%;
 
+}

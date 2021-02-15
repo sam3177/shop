@@ -29,10 +29,11 @@
 							<a class="nav-link active" href="/admin/products">Products</a>
 						</li>
 						<li class="nav-item user">
-							<% if (!user) { %>
+							<% if (!user.id) { %>
 								<a class="btn btn-secondary mx-2" href="/register">Register</a>
 								<a class="btn btn-secondary" href="/login">Login</a>
 								<% } else { %>
+									<p class="m-0 mx-2">Hi, <%= user.userName %>!</p>
 									<a class="btn btn-secondary" href="/logout">Logout</a>
 									<% } %>
 						</li>

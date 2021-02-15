@@ -1,7 +1,9 @@
 const express = require('express');
 const usersRepo = require('../../repos/users');
 const router = express.Router();
-const {errMiddleware} = require('./middlewares');
+const {
+	errMiddleware
+} = require('./middlewares');
 
 const {
 	usernameValidator,
@@ -23,7 +25,6 @@ router.post(
 		passwordConfirmValidator
 	],
 	errMiddleware('register'),
-
 	async (req, res) => {
 		const { username, password } = req.body;
 
@@ -33,10 +34,10 @@ router.post(
 		});
 		//get id from user and add it to the cookie session
 		req.session.userId = user.id;
+		req.session.userName = user.username;
 
 		console.log('user added');
 		res.redirect('/admin/products');
-		
 	}
 );
 // login GET
@@ -58,12 +59,14 @@ router.post(
 			username
 		});
 		req.session.userId = existing.id;
+		req.session.userName = existing.username;
 		res.redirect('/admin/products');
 	}
 );
 //logout GET
 router.get('/logout', (req, res) => {
 	req.session = null;
+	res.locals.user = null;
 	res.redirect('/');
 });
 

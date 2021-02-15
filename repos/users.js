@@ -39,13 +39,4 @@ class UsersRepo extends Repository{
 	}
 }
 
-// const test = async () => {
-// 	const users = new UsersRepo('users.json');
-
-// 	await users.getOneBy({ avatar: 'http' });
-
-// 	// console.log(content);
-// };
-
-// test();
 module.exports = new UsersRepo('users.json');

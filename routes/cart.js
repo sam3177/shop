@@ -151,4 +151,9 @@ router.post(
 	}
 );
 
+//checkout GET
+router.get('/cart/checkout', (req, res) =>{
+	res.render('./checkout')
+})
+
 module.exports = router;

@@ -23,7 +23,6 @@ router.get(
 	'/admin/products',
 	loggedInMiddleware,
 	async (req, res) => {
-		console.log('plmplm', res.locals.user);
 		const products = await productsRepo.getAll();
 		res.render('./admin/products/adminShow', {
 			products

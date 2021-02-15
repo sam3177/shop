@@ -16,17 +16,19 @@ app.use(
 );
 app.use(cookieSession({ keys: [ 'qwerty' ] }));
 app.use((req, res, next) => {
-	try{
-		res.locals.user =req.session? req.session.userId : false
-	} catch(e){
-		res.locals.user =false
-		
+	try {
+		res.locals.user = {
+			id       : req.session.userId,
+			userName : req.session.userName
+		};
+	} catch (e) {
+		res.locals.user = false;
 	}
 	res.locals.errors = {
-		username: undefined,
-		password: undefined,
-		passwordConfirm: undefined
-	}
+		username        : undefined,
+		password        : undefined,
+		passwordConfirm : undefined
+	};
 	next();
 });
 app.use(authRoutes);
@@ -35,7 +37,6 @@ app.use(productsRoutes);
 app.use(cartRoutes);
 
 //RESTful ROUTES
-
 
 app.listen(3000, () =>
 	console.log('server Started')
